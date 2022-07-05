@@ -12,22 +12,32 @@ const StyledHeader = styled.div`
 
 const StyledHeaderLeftTile = styled.div`
   display: flex;
+  font-size: 26px;
+  font-weight: 900;
 `
 
 const StyledHeaderRightTile = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 900;
+`
+
+const StyledParagraph = styled.p`
+  color: var(--paragraph--light);
 `
 
 export default function Header() {
     return (
         <StyledHeader>
             <StyledHeaderLeftTile>
-                <p>Calc</p>
+                <StyledParagraph>calc</StyledParagraph>
             </StyledHeaderLeftTile>
 
             <StyledHeaderRightTile>
-                <p>theme</p>
+                <StyledParagraph>theme</StyledParagraph>
             </StyledHeaderRightTile>
         </StyledHeader>
     )

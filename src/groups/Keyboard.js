@@ -13,14 +13,40 @@ const StyledKeyboard = styled.div`
     ". . . . ."
     ". . . . ."
     ". . . . .";
+        
+        & div:nth-child(21) { grid-column: span 3; }
+        & div:nth-child(22) { grid-column: span 2; }
+        
+  padding: var(--keyboard--padding);
   border-radius: var(--border--radius);
+  background-color: var(--background--variant-3);
 `
 
 export default function Keyboard() {
     return (
         <StyledKeyboard>
+            <Button buttonLabel={ "7" } />
+            <Button buttonLabel={ "8" } />
+            <Button buttonLabel={ "9" } />
+            <Button buttonLabel={ "+" } />
+            <Button buttonLabel={ "D" } />
+            <Button buttonLabel={ "4" } />
+            <Button buttonLabel={ "5" } />
+            <Button buttonLabel={ "6" } />
+            <Button buttonLabel={ "-" } />
+            <Button buttonLabel={ "P" } />
             <Button buttonLabel={ "1" } />
             <Button buttonLabel={ "2" } />
+            <Button buttonLabel={ "3" } />
+            <Button buttonLabel={ "x" } />
+            <Button buttonLabel={ "(" } />
+            <Button buttonLabel={ "0" } />
+            <Button buttonLabel={ "." } />
+            <Button buttonLabel={ "%" } />
+            <Button buttonLabel={ "/" } />
+            <Button buttonLabel={ ")" } />
+            <Button buttonLabel={ "R" } />
+            <Button buttonLabel={ "=" } />
         </StyledKeyboard>
     )
 }
