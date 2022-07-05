@@ -20,7 +20,12 @@ const StyledButton = styled.div`
  
       &:hover {
         opacity: 0.8;
-        transition: ease-in 0.2s;
+        transition: ease-in 0.1s;
+      }
+  
+      &:active {
+        box-shadow: 0 0 0 0;
+        transform: translateY(4px);
       }
 `
 const StyledButtonParagraph = styled.p`
