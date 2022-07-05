@@ -1,10 +1,26 @@
+import styled from "styled-components"
+import { GlobalStyles } from './GlobalStyles.styles.js'
+import Header from "./groups/Header";
+import Display from "./groups/Display";
+import Keyboard from "./groups/Keyboard";
+import Footer from "./groups/Footer";
 
-function App() {
+const StyledSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    width: var(--StyledSection--width);
+    height: var(--StyledSection--height);
+`
+
+export default function App() {
   return (
-   <>
-       <p>Simple template</p>
-   </>
+     <StyledSection>
+         <GlobalStyles />
+            <Header />
+            <Display />
+            <Keyboard />
+            <Footer />
+     </StyledSection>
   )
 }
-
-export default App
