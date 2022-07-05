@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { StyledButton } from "../components/Button.style.js";
 
 const StyledKeyboard = styled.div`
   display: grid;
@@ -18,7 +19,7 @@ const StyledKeyboard = styled.div`
 export default function Keyboard() {
     return (
         <StyledKeyboard>
-
+            <StyledButton buttonLabel={ "1" } backgroundColor={ "brown" }></StyledButton>
         </StyledKeyboard>
     )
 }
