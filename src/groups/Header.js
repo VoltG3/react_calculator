@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BlinkingLight from "../components/BlinkingLight.js"
 
 const StyledHeader = styled.div`
   display: grid;
@@ -76,7 +77,7 @@ export default function Header() {
             <StyledHeaderRightTile>
                 <StyledSwitchContainer>
                     <StyledSwitchContainerTile01>
-                        <p>x</p>
+                        <BlinkingLight />
                     </StyledSwitchContainerTile01>
 
                     <StyledSwitchContainerTile02>
