@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BlinkingLight from "../components/BlinkingLight.js"
+import ColorThemaSwitch from "../components/ColorThemaSwitch";
 
 const StyledHeader = styled.div`
   display: grid;
@@ -44,17 +45,22 @@ const StyledSwitchContainerTile01 = styled.div`
 const StyledSwitchContainerTile02 = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+      margin-left: 3px;
+      margin-right: 3px;
   align-items: flex-end;
 `
 
 const StyledSwitchContainerTile03 = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
 `
 
 const StyledSwitchContainerTile04 = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: row;
 `
 
@@ -91,7 +97,7 @@ export default function Header() {
                     </StyledSwitchContainerTile03>
 
                     <StyledSwitchContainerTile04>
-                        <StyledParagraph>switch</StyledParagraph>
+                        <ColorThemaSwitch />
                     </StyledSwitchContainerTile04>
                 </StyledSwitchContainer>
             </StyledHeaderRightTile>
