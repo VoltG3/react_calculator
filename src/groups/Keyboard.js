@@ -29,7 +29,7 @@ export default function Keyboard() {
             <Button buttonLabel={ "8" } />
             <Button buttonLabel={ "9" } />
             <Button buttonLabel={ "+" } />
-            <Button buttonLabel={ "D" } />
+            <Button buttonLabel={ "DEL" } />
             <Button buttonLabel={ "4" } />
             <Button buttonLabel={ "5" } />
             <Button buttonLabel={ "6" } />
@@ -45,7 +45,7 @@ export default function Keyboard() {
             <Button buttonLabel={ "%" } />
             <Button buttonLabel={ "/" } />
             <Button buttonLabel={ ")" } />
-            <Button buttonLabel={ "R" } />
+            <Button buttonLabel={ "RESET" } />
             <Button buttonLabel={ "=" } />
         </StyledKeyboard>
     )
