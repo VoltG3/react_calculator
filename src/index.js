@@ -13,11 +13,14 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case "GET_VALUE_FROM_STORE":
-            return {...state, variable: state.variable }
-
-        case "ADD_VARIABLE":
+        case "ADD_TO_VARIABLE":
             return {...state, variable: state.variable + action.payload}
+
+        case "VARIABLE_IS_VARIABLE":
+            return {...state, variable: state.variable = action.payload}
+
+        case "ADD_TO_ARRAY":
+            return {...state, array: state.array = action.payload}
 
         case "RESET":
             return {...state, variable: state.variable = 0}
@@ -29,8 +32,8 @@ const reducer = (state = defaultState, action) => {
 
 const store = redux.createStore(reducer)
 store.subscribe(() => {
-    STDCoutPost0()
-    console.log(store.getState())
+    console.log("[ POST 0 ] - STATUS")
+    console.table(store.getState())
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

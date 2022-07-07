@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useSelector } from "react-redux"
 
+
 const StyledDisplay = styled.div`
   display: flex;
   justify-content: end;
@@ -17,9 +18,13 @@ const StyledDisplay = styled.div`
 
 export default function Display() {
     const variable = useSelector(state => state.variable)
+    const array = useSelector(state => state.array)
+
+
 
     return (
         <StyledDisplay>
+
             <p>{variable}</p>
         </StyledDisplay>
     )

@@ -1,12 +1,6 @@
 import styled from "styled-components"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getButtonLabelValue } from "../utils/GetButtonLabelValue.js"
-import { STDCoutPost0,
-         STDCoutPost1,
-         STDCoutPost2,
-         STDCoutPost3,
-         STDCoutPost4 } from "../utils/StdCoutTerminall.js";
-import {connect} from "react-redux"
 
 const StyledButton = styled.div`
   background-color: ${({labelValue}) => {
@@ -51,38 +45,96 @@ const StyledButtonParagraph = styled.p`
     font-weight: 700;
 `
 
+window.variableBefore = "0"
+window.arrayBefore = []
+window.dot = false
+
 const Button = ({ buttonLabel }) => {
     const dispatch = useDispatch()
     const getUserInput = (buttonValue) => {
 
         if(buttonValue === "RESET") {
-            dispatch({type:"RESET"})
-            STDCoutPost1()
+            console.log("[ POST 1 ] - RESET")
+                dispatch({
+                    type:"RESET"
+                }); window.variableBefore = "0"
+                    window.dot = false
         }
 
         if(buttonValue === "DEL") {
-            STDCoutPost2()
+            console.log("[ POST 2 ] - DELETE")
+            console.log("           - variable BEFORE delete     ::", window.variableBefore, "lenght", window.variableBefore.length)
+                let isDot = window.variableBefore.charAt(window.variableBefore.length - 1)
+                    if(isDot === ".") { window.dot = false }
+
+                let temp = window.variableBefore.slice(0, -1)
+
+                    temp.length === 0 ? temp = 0 : temp = temp
+                           window.variableBefore = temp
+
+            dispatch({type:"VARIABLE_IS_VARIABLE", payload: window.variableBefore})
+            console.log("           - variable AFTER delete      ::", window.variableBefore, "lenght", window.variableBefore.length)
         }
 
         if(buttonValue === "=") {
-            STDCoutPost3()
+            console.log("[ POST 3 ] - RESULT")
+
         }
 
         if(buttonValue === ".") {
-            STDCoutPost4()
+            console.log("[ POST 4 ] - ADD DOT")
+            console.log("           - dot status before          ::", window.dot)
+                if(window.dot === false && buttonValue === ".") {
+                    dispatch({
+                        type:"ADD_TO_VARIABLE",
+                        payload: buttonValue
+                    }); window.dot = true
+                        window.variableBefore += buttonValue
+
+                } else {
+                   console.log("           - CERR allow one dot per variable !")
+                }
+
+            console.log("           - dot status after           ::", window.dot)
         }
 
         if(!isNaN(buttonValue)) {
-            dispatch({type:"GET_VALUE_FROM_STORE"})
+            console.log("           - variable BEFORE user click :: ", window.variableBefore)
+                if(window.variableBefore === "0" && buttonValue === "0") {
+                    dispatch({
+                        type:"VARIABLE_IS_VARIABLE",
+                        payload: buttonValue
+                    })
+                }
 
-            dispatch({type:"ADD_VARIABLE", payload: buttonValue})
+                 else if(window.variableBefore === "0" && parseInt(buttonValue) !== 0) {
+                    dispatch({
+                        type:"VARIABLE_IS_VARIABLE",
+                        payload: buttonValue
+                    }); window.variableBefore = buttonValue
+                }
+
+                else {
+                    window.variableBefore += buttonValue
+                    dispatch({type:"ADD_TO_VARIABLE", payload: buttonValue})
+                }
+
+            console.log("           - variable AFTER user click  ::", window.variableBefore)
         }
 
         else {
-            console.log("operator")
+            // section operators
+
+            window.arrayBefore.push(window.variableBefore)
+            window.arrayBefore.push(buttonValue)
+
+            dispatch({
+                type:"ADD_TO_ARRAY",
+                payload: window.arrayBefore
+            })
         }
 
-        console.log("           - use input :: ", buttonValue)
+        console.log("           - user input                 ::", buttonValue)
     }
 
     return (
