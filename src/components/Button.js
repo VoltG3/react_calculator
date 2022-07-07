@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { getButtonLabelValue } from "../utils/GetButtonLabelValue.js"
 
 const StyledButton = styled.div`
@@ -72,13 +72,16 @@ const Button = ({ buttonLabel }) => {
                     temp.length === 0 ? temp = 0 : temp = temp
                            window.variableBefore = temp
 
-            dispatch({type:"VARIABLE_IS_VARIABLE", payload: window.variableBefore})
+            dispatch({
+                type:"VARIABLE_IS_VARIABLE",
+                payload: window.variableBefore
+            })
+
             console.log("           - variable AFTER delete      ::", window.variableBefore, "lenght", window.variableBefore.length)
         }
 
         if(buttonValue === "=") {
             console.log("[ POST 3 ] - RESULT")
-
         }
 
         if(buttonValue === ".") {
@@ -116,14 +119,17 @@ const Button = ({ buttonLabel }) => {
 
                 else {
                     window.variableBefore += buttonValue
-                    dispatch({type:"ADD_TO_VARIABLE", payload: buttonValue})
+                    dispatch({
+                        type:"ADD_TO_VARIABLE",
+                        payload: buttonValue
+                    })
                 }
 
             console.log("           - variable AFTER user click  ::", window.variableBefore)
         }
 
         else {
-            // section operators
+            // section - operators
 
             window.arrayBefore.push(window.variableBefore)
             window.arrayBefore.push(buttonValue)

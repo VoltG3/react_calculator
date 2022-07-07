@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyles = createGlobalStyle`
-
+  
   :root {
     // Global
     --border--radius: 12px;
@@ -28,7 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     --footer--fontSize: 11px;
   }
 
-  * { border: dotted 1px lightgray; } 
+  // * { border: dotted 1px lightgray; } 
   
   body {
     background: var(--background--variant-0);

@@ -1,10 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createStore } from "redux"
 import { Provider } from "react-redux";
 import App from './App'
 import * as redux from "redux";
-import { STDCoutPost0 } from "./utils/StdCoutTerminall.js";
 
 const defaultState = {
     variable : 0,

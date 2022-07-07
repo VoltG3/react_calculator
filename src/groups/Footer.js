@@ -7,13 +7,8 @@ const StyledFooter = styled.div`
 
   color: var(--footer--paragraph);
   
-    a {
-      color: var(--footer--anchor);
-    }
-  
-    * {
-      margin-left: 6px;
-    }
+    a { color: var(--footer--anchor); }
+    * { margin-left: 6px; }
 `
 
 export default function Footer() {
