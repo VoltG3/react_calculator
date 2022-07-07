@@ -17,6 +17,7 @@ const CheckBoxLabel = styled.label`
       height: 14px;
   padding-bottom: 10px;
   border-radius: 15px;
+  box-shadow: inset 3px 3px 0 0 var(--background--variant-2--shadow);
   background-color: var(--background--variant-2);
   cursor: pointer;
   

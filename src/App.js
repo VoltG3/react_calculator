@@ -14,6 +14,7 @@ const StyledSection = styled.div`
     height: var(--StyledSection--height);
   border: solid 2px var(--background--variant-3);
   border-radius: var(--border--radius);
+  box-shadow: 10px 10px 10px 5px var(--background--variant-1--shadow);
   background-color: var(--background--variant-1);
   padding: 20px;
 `

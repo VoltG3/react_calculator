@@ -11,6 +11,7 @@ const StyledDisplay = styled.div`
       margin-bottom: var(--display--marginBottom);
     font-size: var(--display--fontSize);
   border-radius: var(--border--radius);
+  box-shadow: inset 6px 6px 0 0 var(--background--variant-3--shadow);
   background-color: var(--background--variant-3);
   color: var(--paragraph--light);
 `

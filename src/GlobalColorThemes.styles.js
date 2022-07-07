@@ -1,12 +1,15 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalColorThemes = createGlobalStyle`
-  
+
   :root {
     --background--variant-0: hsl(222, 40%, 18%);
     --background--variant-1: hsl(222, 26%, 31%);
+    --background--variant-1--shadow: hsl(221, 38%, 15%);
     --background--variant-2: hsl(223, 31%, 20%);
+    --background--variant-2--shadow: hsl(224, 31%, 25%);
     --background--variant-3: hsl(224, 36%, 15%);
+    --background--variant-3--shadow: hsl(221, 45%, 22%);
     --color--btn--slider: hsl(6, 70%, 34%);
     --color--btn--variant-1: hsl(30, 25%, 89%);
     --color--btn--variant-1--shadow: hsl(28, 16%, 65%);
