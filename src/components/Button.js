@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { getButtonLabelValue } from "../utils/GetButtonLabelValue.js"
+import { useDispatch } from "react-redux"
 
 const StyledButton = styled.div`
   background-color: ${({labelValue}) => {
@@ -43,21 +45,23 @@ const StyledButtonParagraph = styled.p`
     font-weight: 700;
 `
 
-function getButtonLabelValue(buttonLabel) {
-    let valueToReturn
-    for (let [key, value] of Object.entries({ buttonLabel })) {
-        // console.log("Object buttonLabel to String - ", `${key}: ${value}`)
-        // console.log("Object buttonLabel value     - ", `${value}`)
-        valueToReturn =  `${value}`
+const Button = ({ buttonLabel }) => {
+    const dispatch = useDispatch()
+    const getUserInput = (value) => {
+
+        if(value === 'RESET') {
+            dispatch({type:"RESET"})
+        } else {
+            dispatch({type:"ADD_VARIABLE", payload: value})
+        }
+
+        console.log(value)
     }
 
-    return valueToReturn
-}
-
-const Button = ({ buttonLabel }) => {
     return (
         <StyledButton
             labelValue={ getButtonLabelValue(buttonLabel) }
+            onClick={() => getUserInput(getButtonLabelValue(buttonLabel))}
         >
             <StyledButtonParagraph
                 labelValue={ getButtonLabelValue(buttonLabel) }
