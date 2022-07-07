@@ -1,6 +1,12 @@
 import styled from "styled-components"
-import { getButtonLabelValue } from "../utils/GetButtonLabelValue.js"
 import { useDispatch } from "react-redux"
+import { getButtonLabelValue } from "../utils/GetButtonLabelValue.js"
+import { STDCoutPost0,
+         STDCoutPost1,
+         STDCoutPost2,
+         STDCoutPost3,
+         STDCoutPost4 } from "../utils/StdCoutTerminall.js";
+import {connect} from "react-redux"
 
 const StyledButton = styled.div`
   background-color: ${({labelValue}) => {
@@ -47,15 +53,36 @@ const StyledButtonParagraph = styled.p`
 
 const Button = ({ buttonLabel }) => {
     const dispatch = useDispatch()
-    const getUserInput = (value) => {
+    const getUserInput = (buttonValue) => {
 
-        if(value === 'RESET') {
+        if(buttonValue === "RESET") {
             dispatch({type:"RESET"})
-        } else {
-            dispatch({type:"ADD_VARIABLE", payload: value})
+            STDCoutPost1()
         }
 
-        console.log(value)
+        if(buttonValue === "DEL") {
+            STDCoutPost2()
+        }
+
+        if(buttonValue === "=") {
+            STDCoutPost3()
+        }
+
+        if(buttonValue === ".") {
+            STDCoutPost4()
+        }
+
+        if(!isNaN(buttonValue)) {
+            dispatch({type:"GET_VALUE_FROM_STORE"})
+
+            dispatch({type:"ADD_VARIABLE", payload: buttonValue})
+        }
+
+        else {
+            console.log("operator")
+        }
+
+        console.log("           - use input :: ", buttonValue)
     }
 
     return (
