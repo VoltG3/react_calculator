@@ -20,9 +20,12 @@ export default function Display() {
     const variable = useSelector(state => state.variable)
     const array = useSelector(state => state.array)
 
+    let str = ""
+        window.arrayBefore === 0 ? str = window.variableBefore : str = window.arrayBefore.join(" ") + " " + window.variableBefore
+
     return (
         <StyledDisplay>
-            <p>{variable}</p>
+            <p>{str}</p>
         </StyledDisplay>
     )
 }

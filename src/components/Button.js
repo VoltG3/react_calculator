@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
 import { getButtonLabelValue } from "../utils/GetButtonLabelValue.js"
+import Message from "../utils/Messages.js"
 
 const StyledButton = styled.div`
   background-color: ${({labelValue}) => {
@@ -49,98 +50,142 @@ window.variableBefore = "0"
 window.arrayBefore = []
 window.dot = false
 
+console.log(Message(1))
+console.log(Message(11))
+console.log(Message(12))
+
 const Button = ({ buttonLabel }) => {
     const dispatch = useDispatch()
     const getUserInput = (buttonValue) => {
 
-        if(buttonValue === "RESET") {
-            console.log("[ POST 1 ] - RESET")
-                dispatch({
-                    type:"RESET"
-                }); window.variableBefore = "0"
-                    window.dot = false
+        const RESET_VARIABLE = () => {
+            dispatch({
+                type:"RESET_VARIABLE"
+            }); window.variableBefore = "0"
         }
 
-        if(buttonValue === "DEL") {
-            console.log("[ POST 2 ] - DELETE")
-            console.log("           - variable BEFORE delete     ::", window.variableBefore, "lenght", window.variableBefore.length)
-                let isDot = window.variableBefore.charAt(window.variableBefore.length - 1)
-                    if(isDot === ".") { window.dot = false }
+        const RESET_ARRAY = () => {
+            dispatch({
+                type:"RESET_ARRAY"
+            }); window.arrayBefore.length = 0
+                window.dot = false
+        }
 
-                let temp = window.variableBefore.slice(0, -1)
-
-                    temp.length === 0 ? temp = 0 : temp = temp
-                           window.variableBefore = temp
-
+        const VARIABLE_IS_VARIABLE = () => {
             dispatch({
                 type:"VARIABLE_IS_VARIABLE",
                 payload: window.variableBefore
             })
-
-            console.log("           - variable AFTER delete      ::", window.variableBefore, "lenght", window.variableBefore.length)
         }
 
-        if(buttonValue === "=") {
-            console.log("[ POST 3 ] - RESULT")
+        const ADD_TO_VARIABLE = () => {
+            dispatch({
+                type:"ADD_TO_VARIABLE",
+                payload: buttonValue
+            });
         }
 
-        if(buttonValue === ".") {
-            console.log("[ POST 4 ] - ADD DOT")
-            console.log("           - dot status before          ::", window.dot)
-                if(window.dot === false && buttonValue === ".") {
-                    dispatch({
-                        type:"ADD_TO_VARIABLE",
-                        payload: buttonValue
-                    }); window.dot = true
-                        window.variableBefore += buttonValue
-
-                } else {
-                   console.log("           - CERR allow one dot per variable !")
-                }
-
-            console.log("           - dot status after           ::", window.dot)
-        }
-
-        if(!isNaN(buttonValue)) {
-            console.log("           - variable BEFORE user click :: ", window.variableBefore)
-                if(window.variableBefore === "0" && buttonValue === "0") {
-                    dispatch({
-                        type:"VARIABLE_IS_VARIABLE",
-                        payload: buttonValue
-                    })
-                }
-
-                 else if(window.variableBefore === "0" && parseInt(buttonValue) !== 0) {
-                    dispatch({
-                        type:"VARIABLE_IS_VARIABLE",
-                        payload: buttonValue
-                    }); window.variableBefore = buttonValue
-                }
-
-                else {
-                    window.variableBefore += buttonValue
-                    dispatch({
-                        type:"ADD_TO_VARIABLE",
-                        payload: buttonValue
-                    })
-                }
-
-            console.log("           - variable AFTER user click  ::", window.variableBefore)
-        }
-
-        else {
-            // section - operators
-
-            window.arrayBefore.push(window.variableBefore)
-            window.arrayBefore.push(buttonValue)
-
+        const ADD_TO_ARRAY = () => {
             dispatch({
                 type:"ADD_TO_ARRAY",
                 payload: window.arrayBefore
             })
         }
 
-        console.log("           - user input                 ::", buttonValue)
+        /**
+         *  Section - Functions
+         */
+
+        if(buttonValue === "RESET") {
+            console.log(Message(2))
+
+                RESET_VARIABLE()
+                RESET_ARRAY()
+        }
+
+        if(buttonValue === "DEL") {
+            console.log(Message(3))
+            console.log(Message(31))
+
+                let isDot = window.variableBefore.charAt(window.variableBefore.length - 1)
+                    if(isDot === ".") { window.dot = false }
+
+                let temp = window.variableBefore.slice(0, -1)
+                    temp.length === 0 ? temp = 0 : temp = temp
+                           window.variableBefore = temp
+
+                    VARIABLE_IS_VARIABLE()
+
+            console.log(Message(32))
+        }
+
+        if(buttonValue === "=") {
+            console.log(Message(4))
+        }
+
+        /**
+         *  Section - Dot
+         */
+
+        if(buttonValue === ".") {
+            console.log(Message(5))
+            console.log(Message(51))
+                if(window.dot === false && buttonValue === ".") {
+                   ADD_TO_VARIABLE()
+                        window.variableBefore += buttonValue
+                        window.dot = true
+
+                } else {
+                   console.log(Message(52))
+                }
+
+            console.log(Message(53))
+        }
+
+        /**
+         *  Section - Digits
+         */
+
+        if(!isNaN(buttonValue)) {
+            console.log(Message(13))
+                if(window.variableBefore === "0" && buttonValue === "0") {
+                    VARIABLE_IS_VARIABLE()
+                }
+
+                 else if(window.variableBefore === "0" && parseInt(buttonValue) !== 0) {
+                    VARIABLE_IS_VARIABLE()
+                    window.variableBefore = buttonValue
+                }
+
+                else {
+                    window.variableBefore += buttonValue
+                   ADD_TO_VARIABLE()
+                }
+
+            console.log(Message(14))
+        }
+
+        else {
+
+            /**
+             *  Section Operators
+             */
+
+            if(buttonValue !== "."
+               && buttonValue !== "DEL"
+               && buttonValue !== "RESET"
+               && buttonValue !== "=") {
+                   window.arrayBefore.push(window.variableBefore)
+                   window.variableBefore = " "
+                   window.dot = false
+                   window.arrayBefore.push(buttonValue)
+
+               ADD_TO_ARRAY()
+               ADD_TO_VARIABLE()
+           }
+        }
+
+        console.log(Message(15))
     }
 
     return (

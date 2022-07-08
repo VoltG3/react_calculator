@@ -20,8 +20,11 @@ const reducer = (state = defaultState, action) => {
         case "ADD_TO_ARRAY":
             return {...state, array: state.array = action.payload}
 
-        case "RESET":
+        case "RESET_VARIABLE":
             return {...state, variable: state.variable = 0}
+
+        case "RESET_ARRAY":
+            return {...state, array: state.array = {}}
 
         default:
             return state
@@ -30,8 +33,9 @@ const reducer = (state = defaultState, action) => {
 
 const store = redux.createStore(reducer)
 store.subscribe(() => {
-    console.log("[ POST 0 ] - STATUS")
-    console.table(store.getState())
+    // console.log("[ POST 0 ] - STATUS")
+    // console.table(store.getState())
+    // console.log(store.getState())
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
