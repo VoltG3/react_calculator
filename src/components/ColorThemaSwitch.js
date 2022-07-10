@@ -1,4 +1,7 @@
 import styled from "styled-components"
+import React, {useState} from "react"
+
+window.switchMovesToRight = true
 
 const CheckBoxContainer = styled.div`
   display: flex;
@@ -47,13 +50,35 @@ const CheckBox = styled.input`
       border-radius: 50%;
           width: 18px;
           height: 18px;
-      margin-left: 21px;
+      margin-left: ${({switchPosition}) => {
+          return switchPosition; 
+      }};
       transition: 0.2s;
     }
   }
 `
 
+// window.moveSwitchRight = true
+// function switchPositionController(position) {
+//     if(window.moveSwitchRight === true && position === 1) { return 2 }
+//     if(window.moveSwitchRight === true && position === 2) { return 3 }
+//     if(window.moveSwitchRight === true && position === 3) { return 1 }
+// }
+
+const STATUS_PX = [ "20px;", "36px;", "60px;"]
 const ColorThemaSwitch = () => {
+    const [status, setStatus] = useState(1)
+    console.log("STATUS", status)
+    console.log("switchPosition BEFORE", STATUS_PX[status])
+
+    const handleChange = () => {
+
+        const newStatus = (status + 1) % STATUS_PX.length
+        console.log("STATUS_PX -- length", STATUS_PX.length)
+        setStatus(newStatus)
+
+        console.log("switchPosition AFTER", newStatus, STATUS_PX[status])
+    }
 
     return (
         <CheckBoxContainer>
@@ -61,6 +86,8 @@ const ColorThemaSwitch = () => {
                 <CheckBox
                     id="checkbox"
                     type="checkbox"
+                    onChange={ handleChange }
+                    switchPosition={ STATUS_PX[status] }
                 />
 
                 <CheckBoxLabel
