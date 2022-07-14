@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="stylesheet" type="text/css" href="css/theme01.css" />                <!-- thema01 by default onload -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/switch_thema.css" />
+      <script type="text/javascript" src="js/switch_theme.js"></script>
+      <script type="text/javascript" src="js/calc.js"></script>     
+          <title>Frontend Mentor | Calculator app</title>
+      
+      <script type="text/javascript">
+        window.onload = function(){               // DEFAULT ONLOAD
+          void ThemeSwitch(theme);                // --> theme01.css
+          void std_cout(arr, variable);           // --> cout 0 on display
+        };
+      </script>
+  </head>
+  
+  <body>
+    <div class="calc">
+      
+      <div class="header">
+        <div class="left"><p>calc</p></div>
+        <div class="right">
+          <div class="right_first"><p>THEME</p></div>
+          <div class="right_second">
+            <p>1  2  3</p>
+            
+            <label class="switch">                                                  <!-- switch -> theme -> *.css -->
+              <input type="checkbox" checked onclick="ThemeSwitch()"> 
+              <span class="slider round"></span>
+            </label>
+            
+          </div>
+        </div>
+      </div>
+            
+      <div class="screen" id="output"></div>
+
+      <div class="keyboard">
+        <!-- ROW 1 -->
+        <div class="btn" onclick="addValue(7)">7</div>
+        <div class="btn" onclick="addValue(8)">8</div>
+        <div class="btn" onclick="addValue(9)">9</div> 
+        <div class="btn" onclick="operation(1.1)">+</div>                     <!-- operation -->
+        <div class="btn" onclick="operation(4)">DEL</div>                     <!-- operation -->
+        <!-- ROW 2 -->
+        <div class="btn" onclick="addValue(4)">4</div>
+        <div class="btn" onclick="addValue(5)">5</div> 
+        <div class="btn" onclick="addValue(6)">6</div>
+        <div class="btn" onclick="operation(1.2)">-</div>                     <!-- operation  -->
+        <div class="btn" onclick="operation(1.6)"><p><sub>x</sub>2</p></div>  <!-- operation  -->
+        <!-- ROW 3 -->
+        <div class="btn" onclick="addValue(1)">1</div> 
+        <div class="btn" onclick="addValue(2)">2</div> 
+        <div class="btn" onclick="addValue(3)">3</div>
+        <div class="btn" onclick="operation(1.3)">x</div>                     <!-- opertaion -->
+        <div class="btn" onclick="operation(1.7)">(</div>                     <!-- operation -->
+        <!-- ROW 4 -->
+        <div class="btn" onclick="addValue(0)">0</div>
+        <div class="btn" onclick="operation(2)">.</div>                       <!-- operation -->
+        <div class="btn" onclick="operation(1.5)">%</div>                     <!-- operation -->
+        <div class="btn" onclick="operation(1.4)">/</div>                     <!-- operation -->
+        <div class="btn" onclick="operation(1.8)">)</div>                     <!-- operation -->
+        <!-- ROW 5 -->
+        <div class="btn lang_1" onclick="operation(3)">RESET</div>            <!-- operation -->
+        <div class="btn lang_2" onclick="operation(5)">=</div>                <!-- operation -->
+      </div>
+
+      <div class="footer">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="www.danoss.no">VoltG3</a>.
+      </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
+html, body {
+  margin: 0 auto;
+  height: 100%;
+} 
+
+body { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    height: 100%;
+    width: auto;
+  font-family: Spartan;
+}
+
+  .calc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+      height: 100%;
+      width: auto;
+  }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows:    1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        ". .";
+    }
+
+      .left {
+        display: flex;
+        align-items: center;
+        font-size: 26px;
+      }
+
+      .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+      }
+
+        .right_first {
+          display: flex;
+          align-items: flex-end;
+          padding-right: 14px;
+          font-size: 10px;
+        }
+
+        .right_second {
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+          padding-bottom: 10px;
+          font-size: 8px;
+        }
+
+    .screen {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+        height: 140px;
+        width: auto;
+        padding: 0 20px 0 20px;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 62px;
+    }
+
+    .keyboard {
+      display: grid;
+      grid-template-columns: 90px 90px 90px 90px 90px;
+      grid-template-rows:    60px 60px 60px 60px 60px;
+
+      gap: 25px 25px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        ". . . . ."
+        ". . . . ."
+        ". . . . ."
+        ". . . . ."
+        ". . . . .";
+      padding: 20px;
+    } 
+      /* btn  RESET & RESULT */
+      .lang_1 { 
+        grid-column: span 3;
+      }
+
+      .lang_2 {
+        grid-column: span 2;
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        font-weight: 700;
+      } 
+                              /* NON DIGITS BTN */
+        .btn:nth-child(4),    /* ADD */
+        .btn:nth-child(5),    /* DEL */
+        .btn:nth-child(9),    /* SUBTRACT */
+        .btn:nth-child(10),   /* POW */
+        .btn:nth-child(14),   /* SUBLIME */
+        .btn:nth-child(15),   /* ( */
+        .btn:nth-child(18),   /* PRECENT */
+        .btn:nth-child(19),   /* DIVIDE */
+        .btn:nth-child(20),   /* ) */
+        .btn:nth-child(21),   /* RESET */
+        .btn:nth-child(22) {  /* RESULT */
+          font-size: 18px;
+        }
+
+          .screen,
+          .keyboard,
+          .btn { border-radius: 12px; }
+
+  .footer {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 11px; 
+  }

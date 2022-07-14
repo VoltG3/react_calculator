@@ -55,8 +55,13 @@ $ gitk
 
 #### Calculators are not finished, the calculation logic can be viewed(terminall):
 ```
-/doc/calc_algebra.html 
-/doc/calc_brackets.html
+/vanillaJS_calcualtor/doc/calc_algebra.html 
+/vanillaJS_calculator/doc/calc_brackets.html
+```
+
+#### Vanilla JavaScript color theme switch exempel:
+```
+/vanillaJS_calcualtor/doc/calc_theme_switch.html 
 ```
 
 #### Algebra
