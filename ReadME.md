@@ -51,6 +51,7 @@ $ gitk
 -> 00
 -> 01
 -> 0..
+-> +-
 ```
 
 #### Calculators are not finished, the calculation logic can be viewed(terminall):

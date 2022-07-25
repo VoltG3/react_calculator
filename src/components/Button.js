@@ -46,6 +46,7 @@ const StyledButtonParagraph = styled.p`
     font-weight: 700;
 `
 
+window.isOperatorBefore = false
 window.variableBefore = "0"
 window.arrayBefore = []
 window.dot = false
@@ -69,6 +70,7 @@ const Button = ({ buttonLabel }) => {
                 type:"RESET_ARRAY"
             }); window.arrayBefore.length = 0
                 window.dot = false
+                window.isOperatorBefore = false
         }
 
         const VARIABLE_IS_VARIABLE = () => {
@@ -130,10 +132,12 @@ const Button = ({ buttonLabel }) => {
         if(buttonValue === ".") {
             console.log(Message(5))
             console.log(Message(51))
+
                 if(window.dot === false && buttonValue === ".") {
                    ADD_TO_VARIABLE()
                         window.variableBefore += buttonValue
                         window.dot = true
+                        window.isOperatorBefore = true
 
                 } else {
                    console.log(Message(52))
@@ -162,6 +166,8 @@ const Button = ({ buttonLabel }) => {
                    ADD_TO_VARIABLE()
                 }
 
+                window.isOperatorBefore = false
+
             console.log(Message(14))
         }
 
@@ -175,11 +181,16 @@ const Button = ({ buttonLabel }) => {
                && buttonValue !== "DEL"
                && buttonValue !== "RESET"
                && buttonValue !== "=") {
-                   window.arrayBefore.push(window.variableBefore)
-                   window.variableBefore = " "
-                   window.dot = false
-                   window.arrayBefore.push(buttonValue)
-
+                if(window.isOperatorBefore === true ) {
+                    window.variableBefore = window.variableBefore
+                } else {
+                    window.isOperatorBefore = true
+                    window.arrayBefore.push(window.variableBefore)
+                    window.variableBefore = " "
+                    window.dot = false
+                    window.arrayBefore.push(buttonValue)
+                }
+                console.log(">>>>>>>>>>>>>", window.variableBefore)
                ADD_TO_ARRAY()
                ADD_TO_VARIABLE()
            }
