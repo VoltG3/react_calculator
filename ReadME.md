@@ -5,12 +5,6 @@ colors - [www.frontendmentor.io](https://www.frontendmentor.io/challenges/calcul
 
 <img src="https://github.com/VoltG3/react_calculator/blob/master/doc/Screenshot00.png" alt="img">
 
-> description description description  
-description description description  
-description description description  
-description description description  
-description description description
-
 
 ### EXSEMPEL - how to create/config React project
 ---
